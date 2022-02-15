@@ -1,0 +1,206 @@
+<app-navbar [input]="barColor"></app-navbar>
+<div class="container">
+
+    <div class="card text-center mb-3">
+        <div class="card-header">
+            Finite Observable here! 👁👈
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Jokes API 🤡🤡🤡</h5>
+            <p class="card-text">{{joke}}</p>
+        </div>
+        <span class="input-group-btn mb-3">
+            <button (click)="getJoke()" class="btn btn-primary">Tell me a Joke!</button>
+        </span>
+        <div class="card-footer text-muted">
+            This could be a waste of time...
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">NgClass example</h5>
+                    <p class="card-text">Let me play with the navbar 😀</p>
+                    <button (click)="colorChange()" class="btn btn-primary">Change navbar color!</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Kinda Heisenberg Modal 😎 </h5>
+                    <p class="card-text">You know. You all know exactly who I am.</p>
+                    <form [formGroup]="inputForm" (ngSubmit)="sayMyName()">
+                        <div class="md-form">
+                            <div class="input-group">
+
+                                <input id="myName" class="form-control" name="myName" mdbInput placeholder="your name"
+                                    [(ngModel)]="myName" minlength="2" maxlength="20"
+                                    [ngClass]="{ 'is-invalid': e.myName.errors }" formControlName="myName">
+                                <div *ngIf="e.myName.errors" class="invalid-feedback">
+
+                                    <div *ngIf="e.myName.errors.minlength">Debe contener 2 digitos como mínimo
+                                    </div>
+                                    <div *ngIf="e.myName.errors.maxlength">Debe contener 20 dígitos como máximo
+                                    </div>
+                                </div>
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-primary">Say my Name!</button>
+                                </span>
+
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="card mb-1" style="max-width: 546px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="../assets/img1.jpg" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">When you code so hard til you breake your radius 🦴😭 </h5>
+                    <p class="card-text">Thank's god the guy survives and is coding again! For better...</p>
+                    <p class="card-text"><small class="text-muted">this is only spam or not?? try some infinite
+                            Observables kind
+                            here!😎 </small></p>
+                    <button (click)="incrementer()" class="btn btn-primary">Increment the navbar counter!</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            Let's play a trivia game! Using *ngFor and *ngIf 🧩
+        </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-2">
+
+                <p>{{question}}</p>
+
+            </blockquote>
+            <form [formGroup]="radioForm" (ngSubmit)="checkAnswer()">
+                <div class="form-check" *ngFor="let answ of answers">
+                    <input class="form-check-input" type="radio" name="answerControl" id="answer" [value]="answ"
+                        [(ngModel)]="answer" [ngModelOptions]="{standalone: true}">
+                    <label class="form-check-label" for="answerControl">
+                        {{answ}}
+                    </label>
+                </div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button type="submit" class="btn btn-success float-right">try</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</div>
+<div class="container-fluid">
+    <div class="card">
+
+        <div class="card-body">
+            <h5 class="card-title">@CacoruchoDev for Mood</h5>
+
+        </div>
+        <div class="card-footer">
+            <a id="linkedb" class="btn btn-primary p-1 " style="background-color: #0082ca;"
+                href="https://www.linkedin.com/in/matiasn%C3%BCrnberg/" target="_blank" role="button"><i
+                    class="fab fa-linkedin-in"></i></a>
+            <a class="btn btn-primary p-1 " style="background-color: #333333;" href="https://github.com/manurnberg"
+                target="_blank" role="button"><i class="fab fa-github"></i></a>
+            <span>
+                <p class="card-text">Matias Nürnberg 2022</p>
+            </span>
+
+        </div>
+
+
+    </div>
+</div>
+
+<div mdbModal #myNameModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myNameModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header orange">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="myNameModal.hide()">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title w-100 white-text" id="myModalLabel">Say my Name!</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <strong>
+                        <h2>{{myName}}!</h2>
+                    </strong>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" mdbWavesEffect (click)="myNameModal.hide()">You're
+                    goddamn
+                    right</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div mdbModal #triviaModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myNameModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div *ngIf="correct" class="modal-content">
+            <div class="modal-header orange">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="triviaModal.hide()">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title w-100 white-text" id="myModalLabel">Success!</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <strong>
+                        <h2>Great!!! {{answer}} is Correct!!</h2>
+                    </strong>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" mdbWavesEffect (click)="getTrivia()"
+                    (click)="triviaModal.hide()">Play Again! you're awesome!!</button>
+
+            </div>
+        </div>
+        <div *ngIf="!correct" class="modal-content">
+            <div class="modal-header orange">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="triviaModal.hide()">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title w-100 white-text" id="myModalLabel">Wrong!</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <strong>
+                        <h2>{{answer}} is Wrong!!</h2>
+                    </strong>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" mdbWavesEffect (click)="triviaModal.hide()">Try Again!
+                    may
+                    the force be with you!</button>
+
+            </div>
+        </div>
+
+    </div>
+</div>
